@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta name="theme-color" content="#000000" />
+    <script
+      defer
+      src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.min.css"
+    />
+    <link rel="icon" href="./favicon.ico" type="image/x-icon" />
+    <title>Beers for weather</title>
+    <style>
+      .initial-loading-container {
+          background-color: #eef0f3;
+          position: fixed;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          display: flex;
+          flex: 1 1 auto;
+          justify-content: center;
+          align-items: center;
+          flex-direction: column;
+      }
+
+      .initial-loading-container > .spinner {
+          animation: spinner-rotate 2s linear infinite;
+          z-index: 2;
+          width: 48px;
+          height: 48px;
+      }
+
+      .initial-loading-container > .spinner > .fill {
+          stroke: #008be1;
+          animation: bnt-dash 1.5s ease-in-out infinite;
+      }
+
+      .initial-loading-container > .spinner > .shape {
+          stroke: #c7ccd1;
+      }
+
+      .initial-loading-container > .loading-text {
+          font-weight: 600;
+          font-size: 18px;
+      }
+
+      @keyframes spinner-rotate {
+          100% {
+              transform: rotate(360deg);
+          }
+      }
+
+      @keyframes bnt-dash {
+          0% {
+              stroke-dasharray: 1, 150;
+              stroke-dashoffset: 0;
+          }
+
+          50% {
+              stroke-dasharray: 90, 150;
+              stroke-dashoffset: -35;
+          }
+
+          100% {
+              stroke-dasharray: 90, 150;
+              stroke-dashoffset: -124;
+          }
+      }
+  </style>
+  </head>
+
+  <body>
+    <div id="root">
+      <div class="initial-loading-container">
+          <svg class="spinner" viewBox="0 0 50 50">
+              <circle class="shape" cx="25" cy="25" r="20" fill="none" stroke-width="4"></circle>
+              <circle class="fill" cx="25" cy="25" r="20" fill="none" stroke-width="4"></circle>
+          </svg>
+      </div>
+    </div>
+    <script type="module" src="/src/index.tsx"></script>
+  </body>
+</html>
