@@ -3,7 +3,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const { getThemeVariables } = require("antd/dist/theme");
 const port = process.env.PORT || 3000;
-const webpack = require('webpack');
+const Dotenv = require('dotenv-webpack');
 
 
 module.exports = {
@@ -59,13 +59,11 @@ module.exports = {
     ],
   },
   plugins: [
+    new Dotenv(),
     new HtmlWebpackPlugin({
       template: path.resolve(path.join(__dirname, "public", "index.html")),
     }),
     new MiniCssExtractPlugin(),
-    new webpack.DefinePlugin({
-      "process.env": JSON.stringify(process.env),
-    }),
   ],
   devServer: {
     host: "localhost",

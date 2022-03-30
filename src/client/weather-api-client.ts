@@ -32,8 +32,6 @@ export interface WeatherData {
 }
 
 export class WeatherApiClient {
-  private appKey = "3419dffd5b386c04d83e6afec64e8e32";
-
   constructor() {}
 
   public async getCurrentAndForcastWeatherData(
@@ -46,7 +44,7 @@ export class WeatherApiClient {
         location.coords.latitude
       }&lon=${location.coords.longitude}&units=${units}&exclude=${excludes.join(
         ","
-      )}&appid=${this.appKey}&lang=ru`,
+      )}&appid=${process.env.OPEN_WEATHER_API_KEY}&lang=ru`,
       method: "GET",
       responseType: "json",
     };
