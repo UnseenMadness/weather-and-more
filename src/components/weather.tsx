@@ -28,19 +28,28 @@ export const WeatherComponent: React.FC = () => {
     }
   }, [userLocation]);
 
-  return !currentWeather ? (
-    <Spin tip="Loading..." />
-  ) : (
-    <Card
-      style={{ width:'300px' }}
-      cover={
-        <img
-          alt="example"
-          src={`http://openweathermap.org/img/wn/${currentWeather.current.weather[0].icon}@2x.png`}
-        />
-      }
-    >
-      <Meta title={`${parseInt(currentWeather.current.temp)} ℃`} description={`${currentWeather.current.weather[0].description}, ощущается как ${parseInt(currentWeather.current.feels_like)} ℃. Ветер ${currentWeather.current.wind_speed} м/с`} />
-    </Card>
+  return (
+    <div style={{ width: "300px" }}>
+      {!currentWeather ? (
+        <Spin tip="Loading..." />
+      ) : (
+        <Card
+          cover={
+            <img
+              src={`http://openweathermap.org/img/wn/${currentWeather.current.weather[0].icon}@2x.png`}
+            />
+          }
+        >
+          <Meta
+            title={`${parseInt(currentWeather.current.temp)} ℃`}
+            description={`${
+              currentWeather.current.weather[0].description
+            }, ощущается как ${parseInt(
+              currentWeather.current.feels_like
+            )} ℃. Ветер ${currentWeather.current.wind_speed} м/с`}
+          />
+        </Card>
+      )}
+    </div>
   );
 };
